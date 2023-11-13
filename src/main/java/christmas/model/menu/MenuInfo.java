@@ -1,5 +1,8 @@
 package christmas.model.menu;
 
-public class MenuInfo {
+public interface MenuInfo {
+	public String getName();
+
+	public int getPrice();
 
 }

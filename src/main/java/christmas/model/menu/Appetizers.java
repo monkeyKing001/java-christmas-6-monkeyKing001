@@ -5,7 +5,7 @@ import static christmas.util.Constants.StringConstants.*;
 
 import java.util.Arrays;
 
-public enum Appetizers {
+public enum Appetizers implements MenuInfo {
 	MUSHROOM_SOUP(MUSHROOM_SOUP_NAME, MUSHROOM_SOUP_PRICE),
 	TAPAS(TAPAS_KOR_NAME, TAPAS_PRICE),
 	CAESAR_SALAD(CAESAR_SALAD_KOR_NAME, CAESAR_SALAD_PRICE),

@@ -5,7 +5,7 @@ import static christmas.util.Constants.StringConstants.*;
 
 import java.util.Arrays;
 
-public enum Desserts {
+public enum Desserts implements MenuInfo {
 	CHOCO_CAKE(CHOCOLATE_CAKE_KOR_NAME, CHOCOLATE_CAKE_PRICE),
 	ICE_CREAM(ICE_CREAM_KOR_NAME, ICE_CREAM_PRICE),
 	UNKNOWN(UNKNOWN_NAME, ZERO);

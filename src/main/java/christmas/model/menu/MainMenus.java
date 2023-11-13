@@ -5,7 +5,7 @@ import static christmas.util.Constants.StringConstants.*;
 
 import java.util.Arrays;
 
-public enum MainMenus {
+public enum MainMenus implements MenuInfo {
 	T_BONE_STAKE(T_BONE_STAKE_KOR_NAME, T_BONE_STAKE_PRICE),
 	BARBEQUE_RIB(BARBEQUE_RIB_KOR_NAME, BARBEQUE_RIB_PRICE),
 	SEAFOOD_PASTA(SEAFOOD_PASTA_KOR_NAME, SEAFOOD_PASTA_PRICE),

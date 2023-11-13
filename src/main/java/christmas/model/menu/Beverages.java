@@ -5,7 +5,7 @@ import static christmas.util.Constants.StringConstants.*;
 
 import java.util.Arrays;
 
-public enum Beverages {
+public enum Beverages implements MenuInfo {
 	ZERO_COKE(ZERO_COKE_NAME, ZERO_COKE_PRICE),
 	RED_WINE(RED_WINE_NAME, RED_WINE_PRICE),
 	CHAMPAGNE(CHAMPAGNE_NAME, CHAMPAGNE_PRICE),

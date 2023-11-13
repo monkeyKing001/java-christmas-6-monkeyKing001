@@ -10,16 +10,17 @@ import christmas.model.menu.MainMenus;
 import christmas.util.PrintPhrase;
 
 public class Order {
-	int day;
-	final Map<Beverages, Integer> beverages;
+	private int day;
+	private int totalPrice = 0;
 	final Map<Appetizers, Integer> appetizers;
 	final Map<MainMenus, Integer> mainMenus;
+	final Map<Beverages, Integer> beverages;
 	final Map<Desserts, Integer> dessertMenus;
 
 	public Order() {
-		beverages = new EnumMap<>(Beverages.class);
 		appetizers = new EnumMap<>(Appetizers.class);
 		mainMenus = new EnumMap<>(MainMenus.class);
+		beverages = new EnumMap<>(Beverages.class);
 		dessertMenus = new EnumMap<>(Desserts.class);
 	}
 
@@ -29,7 +30,6 @@ public class Order {
 
 	public void setBeverageMenu(Beverages orderMenu, int count) {
 		beverages.put(orderMenu, count);
-		System.out.println("now " + orderMenu.getName() + " : " + count);
 	}
 
 	public void setMenu(String orderMenu) {
@@ -59,16 +59,42 @@ public class Order {
 
 	public void setAppetizerMenu(Appetizers orderMenu, int count) {
 		appetizers.put(orderMenu, count);
-		System.out.println("now " + orderMenu.getName() + " : " + count);
 	}
 
 	public void setMainMenu(MainMenus orderMenu, int count) {
 		mainMenus.put(orderMenu, count);
-		System.out.println("now " + orderMenu.getName() + " : " + count);
 	}
 
 	public void setDessertMenu(Desserts orderMenu, int count) {
 		dessertMenus.put(orderMenu, count);
-		System.out.println("now " + orderMenu.getName() + " : " + count);
+	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public Map<Desserts, Integer> getDessertMenus() {
+		return dessertMenus;
+	}
+
+	public Map<MainMenus, Integer> getMainMenus() {
+		return mainMenus;
+	}
+
+	public Map<Appetizers, Integer> getAppetizerMenus() {
+		return appetizers;
+	}
+
+	public Map<Beverages, Integer> getBeveragesMenus() {
+		return beverages;
+	}
+
+	public void addPrice(int price) {
+		this.totalPrice += price;
+
+	}
+
+	public int getTotalPrice() {
+		return this.totalPrice;
 	}
 }

@@ -1,15 +1,12 @@
 package christmas;
 
-import christmas.controller.OrderController;
+import christmas.controller.EventController;
 
 public class Application {
 	public static void main(String[] args) {
 		// TODO: 프로그램 구현
-		OrderController orderController = new OrderController();
-		orderController.greeting();
-		orderController.takeOrderDay();
-		orderController.takeOrderMenu();
-		orderController.calculate();
-		orderController.report();
+		EventController eventController = new EventController();
+		eventController.eventStart();
+		;
 	}
 }

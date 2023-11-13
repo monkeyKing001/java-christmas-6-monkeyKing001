@@ -30,6 +30,6 @@ public enum Appetizers {
 		return Arrays.stream(values())
 			.filter(menu -> menu.name.equals(menuName))
 			.findAny()
-			.orElse(null);
+			.orElse(UNKNOWN);
 	}
 }

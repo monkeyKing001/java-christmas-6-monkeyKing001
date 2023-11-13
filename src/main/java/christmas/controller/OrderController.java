@@ -26,6 +26,7 @@ public class OrderController {
 	}
 
 	public void takeOrderMenu() {
+		//need orderMenu validation check
 		String orderMenu = inputView.takeOrderMenu();
 		order.setMenu(orderMenu);
 	}
@@ -39,4 +40,5 @@ public class OrderController {
 	public void greeting() {
 		inputView.printMessage(PrintPhrase.InputMessage.MSG_GREETING);
 	}
+
 }

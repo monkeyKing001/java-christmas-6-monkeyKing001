@@ -21,4 +21,10 @@ public class InputView {
 		}
 		return (day);
 	}
+
+	public static String takeOrderMenu() {
+		printMessage(PrintPhrase.InputMessage.MSG_MENU_ORDER);
+		String menu = Console.readLine();
+		return menu;
+	}
 }

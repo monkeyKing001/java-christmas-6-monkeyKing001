@@ -21,10 +21,13 @@ public class OrderController {
 	}
 
 	public void takeOrderDay() {
-		inputView.takeOrderDay();
+		int orderDay = inputView.takeOrderDay();
+		order.setDay(orderDay);
 	}
 
 	public void takeOrderMenu() {
+		String orderMenu = inputView.takeOrderMenu();
+		order.setMenu(orderMenu);
 	}
 
 	public void calculate() {

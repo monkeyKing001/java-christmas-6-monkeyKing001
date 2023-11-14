@@ -34,9 +34,9 @@ public class Util {
 		return tokens.length;
 	}
 
-	public static boolean isDigit(String str) {
+	public static boolean isNumber(String str) {
 		for (int i = 0; i < str.length(); i++) {
-			if (str.charAt(i) < '0' || str.charAt(i) > '9') {
+			if (Character.isDigit(str.charAt(i)) == false) {
 				return false;
 			}
 		}

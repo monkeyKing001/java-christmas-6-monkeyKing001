@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 
-class InputDayTest extends NsTest {
+public class InputDayTest extends NsTest {
 	@Test
 	@DisplayName("Day test 1 : not a digit")
 	void dayExceptionNotDigit() {

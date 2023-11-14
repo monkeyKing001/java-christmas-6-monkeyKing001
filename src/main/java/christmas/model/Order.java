@@ -128,4 +128,5 @@ public class Order {
 	public void setBadge(Badge badgeType) {
 		this.badge = badgeType;
 	}
+
 }

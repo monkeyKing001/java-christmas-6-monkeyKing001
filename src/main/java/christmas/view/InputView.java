@@ -32,7 +32,8 @@ public class InputView {
 			MenuInputValidator.parsingCheck(menu);
 			MenuInputValidator.menuCheck(menu);
 		} catch (Exception e) {
-
+			printMessage(Exceptions.ErrorMessage.INVALID_MENU);
+			takeOrderMenu();
 		}
 		return menu;
 	}

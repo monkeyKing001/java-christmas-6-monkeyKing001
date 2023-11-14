@@ -23,7 +23,11 @@ public class Constants {
 		public static final int STAR_BADGE_PRICE = 5000;
 		public static final int TREE_BADGE_PRICE = 10000;
 		public static final int SANTA_BADGE_PRICE = 20000;
+		public static final int MENU_INFO_TOKEN_SIZE = 2;
 		public static final int ZERO = 0;
+		public static final int MIN_MENU_COUNT = 1;
+		public static final int MAX_MENU_COUNT = 20;
+		public static final int EVENT_QUALIFICATION_PRICE = 10000;
 	}
 
 	public class DayConstants {

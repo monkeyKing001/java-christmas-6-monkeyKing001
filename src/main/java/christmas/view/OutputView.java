@@ -21,10 +21,6 @@ public class OutputView {
 		System.out.println(msg);
 	}
 
-	public static void printReport(Order order) {
-
-	}
-
 	public static void printReportTitle(Order order) {
 		System.out.printf(PrintPhrase.OutputMessage.MSG_MENU_REPORT_TITLE, order.getDay());
 		System.out.println();
@@ -91,9 +87,12 @@ public class OutputView {
 		System.out.println(decimalFormat.format(totalPrice));
 	}
 
-	public static void printDiscountList(Order order, Discount discount, Gift gift) {
+	public static void printDiscountList(Order order) {
+
 		System.out.println();
 		printMSG(PrintPhrase.OutputMessage.MSG_BENEFIT_TITLE);
+		Discount discount = order.getDiscount();
+		Gift gift = order.getGift();
 		printDiscountByTitle(discount.getDDayDiscount(), PrintPhrase.OutputMessage.MSG_D_DAY_DISCOUNT_TITLE);
 		printDiscountByTitle(discount.getDessertMenuDiscount(), PrintPhrase.OutputMessage.MSG_WEEKDAY_DISCOUNT_TITLE);
 		printDiscountByTitle(discount.getMainMenuDiscount(), PrintPhrase.OutputMessage.MSG_WEEKEND_DISCOUNT_TITLE);
@@ -110,8 +109,10 @@ public class OutputView {
 		}
 	}
 
-	public static void printTotalDiscount(Discount discount, Gift gift) {
+	public static void printTotalDiscount(Order order) {
 		System.out.println();
+		Discount discount = order.getDiscount();
+		Gift gift = order.getGift();
 		printMSG(PrintPhrase.OutputMessage.MSG_TOTAL_DISCOUNT_TITLE);
 		int totalDiscount = discount.getTotalDiscount() + gift.getMyGiftPrice();
 		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
@@ -132,17 +133,30 @@ public class OutputView {
 			PrintPhrase.PRICE_UNIT);
 	}
 
-	public static void printBadge(Order order, Badge badge) {
+	public static void printBadge(Order order) {
+		Badge badge = order.getBadge();
 		System.out.println();
 		printMSG(PrintPhrase.OutputMessage.MSG_BADGE_TITLE);
 		printMSG(badge.getName());
 	}
 
-	public static void printGift(Gift gift) {
+	public static void printGift(Order order) {
+		Gift gift = order.getGift();
 		System.out.println();
 		printMSG(PrintPhrase.OutputMessage.MSG_GIFT_TITLE);
 		if (gift.EnableGetGift()) {
 			printMSG(PrintPhrase.OutputMessage.MSG_GIFT);
 		}
+	}
+
+	public static void printReport(Order order) {
+		printReportTitle(order);
+		printOrderedMenu(order);
+		printTotalPrice(order);
+		printGift(order);
+		printDiscountList(order);
+		printTotalDiscount(order);
+		printBill(order);
+		printBadge(order);
 	}
 }

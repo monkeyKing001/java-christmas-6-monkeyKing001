@@ -3,7 +3,6 @@ package christmas.controller;
 import java.util.Map;
 
 import christmas.model.Badge;
-import christmas.model.Client;
 import christmas.model.Discount;
 import christmas.model.Gift;
 import christmas.model.Order;
@@ -18,54 +17,45 @@ import christmas.view.OutputView;
 public class OrderController {
 	InputView inputView;
 	OutputView outputView;
-	Order order;
-	Client client;
-	Gift gift;
-	Discount discount;
 	DiscountController discountController;
-	Badge badge;
 
 	public OrderController() {
-		order = new Order();
-		client = new Client();
-		discount = new Discount();
-		gift = new Gift();
-		badge = Badge.NONE;
 		discountController = new DiscountController();
 	}
 
-	public void calculateDiscount() {
+	public void calculateDiscount(Order order) {
+		Discount discount = order.getDiscount();
 		discountController.getDiscount(order, discount);
-		calculateBill(order, discount);
 	}
 
-	public void calculateBill(Order order, Discount discount) {
+	public void calculateBill(Order order) {
+		Discount discount = order.getDiscount();
 		order.setTotalBill(discount.getTotalDiscount());
 	}
 
-	public void calculateGift() {
+	public void calculateGift(Order order) {
+		Gift gift = order.getGift();
 		if (order.getTotalPrice() >= IntegerConstants.CHAMPAGNE_THRESHOLD) {
 			gift.setEnableGetGift();
 		}
 	}
 
-	public void takeOrderDay() {
+	public void takeOrderDay(Order order) {
 		int orderDay = inputView.takeOrderDay();
 		order.setDay(orderDay);
 	}
 
-	public void takeOrderMenu() {
+	public void takeOrderMenu(Order order) {
 		//need orderMenu validation check
 		String orderMenu = inputView.takeOrderMenu();
 		order.setMenu(orderMenu);
 	}
 
-	public void calculatePrice() {
-		//	discountController.getDiscount(order, discount);
-		calculateAppetizerPrice(this.order);
-		calculateMainPrice(this.order);
-		calculateBeveragePrice(this.order);
-		calculateDessertPrice(this.order);
+	public void calculatePrice(Order order) {
+		calculateAppetizerPrice(order);
+		calculateMainPrice(order);
+		calculateBeveragePrice(order);
+		calculateDessertPrice(order);
 	}
 
 	public void calculateMainPrice(Order order) {
@@ -108,27 +98,15 @@ public class OrderController {
 	}
 
 	public void calculateBadge(Order order) {
+		Badge badge = order.getBadge();
 		if (order.getTotalBill() >= IntegerConstants.STAR_BADGE_PRICE) {
-			this.badge = Badge.STAR;
+			order.setBadge(Badge.STAR);
 		}
 		if (order.getTotalBill() >= IntegerConstants.TREE_BADGE_PRICE) {
-			this.badge = Badge.TREE;
+			order.setBadge(Badge.TREE);
 		}
 		if (order.getTotalBill() >= IntegerConstants.SANTA_BADGE_PRICE) {
-			this.badge = Badge.SANTA;
+			order.setBadge(Badge.SANTA);
 		}
-	}
-
-	public void report() {
-		outputView.printReportTitle(order);
-		outputView.printOrderedMenu(order);
-		outputView.printTotalPrice(order);
-		outputView.printGift(gift);
-		outputView.printDiscountList(order, discount, gift);
-		outputView.printTotalDiscount(discount, gift);
-		outputView.printBill(order);
-		//need split
-		calculateBadge(order);
-		outputView.printBadge(order, badge);
 	}
 }

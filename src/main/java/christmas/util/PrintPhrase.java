@@ -1,15 +1,13 @@
 package christmas.util;
 
 public class PrintPhrase {
-	public static final String FORMAT_ONE_DECIMAL = "#.##";
 	public static final String FORMAT_PRICE = "###,###";
 	public static final String COMMA = ",";
 	public static final String BLANK = " ";
-	public static final String BRACKET_START = "(";
-	public static final String BRACKET_END = ")";
 	public static final String MINUS = "-";
 	public static final String PRICE_UNIT = "원";
 	public static final String MENU_COUNT_UNIT = "개";
+	public static final String NONE = "없음";
 
 	public static class InputMessage {
 		public static final String MSG_GREETING = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";

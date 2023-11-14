@@ -13,6 +13,9 @@ public class Order {
 	private int day;
 	private int totalPrice = 0;
 	private int totalBill = 0;
+	private Gift gift;
+	private Badge badge;
+	private Discount discount;
 	final Map<Appetizers, Integer> appetizers;
 	final Map<MainMenus, Integer> mainMenus;
 	final Map<Beverages, Integer> beverages;
@@ -23,6 +26,9 @@ public class Order {
 		mainMenus = new EnumMap<>(MainMenus.class);
 		beverages = new EnumMap<>(Beverages.class);
 		dessertMenus = new EnumMap<>(Desserts.class);
+		discount = new Discount();
+		gift = new Gift();
+		badge = Badge.NONE;
 	}
 
 	public void setDay(int orderDay) {
@@ -105,5 +111,21 @@ public class Order {
 
 	public void setTotalBill(int discount) {
 		this.totalBill = this.totalPrice - discount;
+	}
+
+	public Gift getGift() {
+		return gift;
+	}
+
+	public Badge getBadge() {
+		return badge;
+	}
+
+	public Discount getDiscount() {
+		return discount;
+	}
+
+	public void setBadge(Badge badgeType) {
+		this.badge = badgeType;
 	}
 }

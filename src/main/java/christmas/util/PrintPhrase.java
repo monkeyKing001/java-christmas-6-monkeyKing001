@@ -20,11 +20,11 @@ public class PrintPhrase {
 
 	public static class OutputMessage {
 		public static final String MSG_MENU_REPORT_TITLE = "12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
-		public static final String MSG_MENU_TITLE = "<주문메뉴>";
-		public static final String MSG_TOTAL_BILL_BEFORE_DISCOUNT_TITLE = "<할인 전 총 주문 금액>";
+		public static final String MSG_MENU_TITLE = "<주문 메뉴>";
+		public static final String MSG_TOTAL_BILL_BEFORE_DISCOUNT_TITLE = "<할인 전 총주문 금액>";
 		public static final String MSG_GIFT_TITLE = "<증정 메뉴>";
 		public static final String MSG_BENEFIT_TITLE = "<혜택 내역>";
-		public static final String MSG_TOTAL_DISCOUNT_TITLE = "<총혜택 내역>";
+		public static final String MSG_TOTAL_DISCOUNT_TITLE = "<총혜택 금액>";
 		public static final String MSG_TOTAL_BILL_TITLE = "<할인 후 예상 결제 금액>";
 		public static final String MSG_BADGE_TITLE = "<12월 이벤트 배지>";
 		public static final String MSG_D_DAY_DISCOUNT_TITLE = "크리스마스 디데이 할인: ";

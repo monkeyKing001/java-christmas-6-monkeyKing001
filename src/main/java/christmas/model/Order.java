@@ -12,6 +12,7 @@ import christmas.util.PrintPhrase;
 public class Order {
 	private int day;
 	private int totalPrice = 0;
+	private int totalBill = 0;
 	final Map<Appetizers, Integer> appetizers;
 	final Map<MainMenus, Integer> mainMenus;
 	final Map<Beverages, Integer> beverages;
@@ -96,5 +97,13 @@ public class Order {
 
 	public int getTotalPrice() {
 		return this.totalPrice;
+	}
+
+	public int getTotalBill() {
+		return this.totalBill;
+	}
+
+	public void setTotalBill(int discount) {
+		this.totalBill = this.totalPrice - discount;
 	}
 }

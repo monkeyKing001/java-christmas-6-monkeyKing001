@@ -1,16 +1,16 @@
 package christmas.controller;
 
-import static christmas.util.Constants.IntegerConstants.*;
-
 import java.util.Map;
 
 import christmas.model.Client;
 import christmas.model.Discount;
+import christmas.model.Gift;
 import christmas.model.Order;
 import christmas.model.menu.Appetizers;
 import christmas.model.menu.Beverages;
 import christmas.model.menu.Desserts;
 import christmas.model.menu.MainMenus;
+import christmas.util.Constants.IntegerConstants;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -19,6 +19,7 @@ public class OrderController {
 	OutputView outputView;
 	Order order;
 	Client client;
+	Gift gift;
 	Discount discount;
 	DiscountController discountController;
 
@@ -26,7 +27,23 @@ public class OrderController {
 		order = new Order();
 		client = new Client();
 		discount = new Discount();
+		gift = new Gift();
 		discountController = new DiscountController();
+	}
+
+	public void calculateDiscount() {
+		discountController.getDiscount(order, discount);
+		calculateBill(order, discount);
+	}
+
+	public void calculateBill(Order order, Discount discount) {
+		order.setTotalBill(discount.getTotalDiscount());
+	}
+
+	public void calculateGift() {
+		if (order.getTotalPrice() >= IntegerConstants.CHAMPAGNE_THRESHOLD) {
+			gift.setEnableGetGift();
+		}
 	}
 
 	public void takeOrderDay() {
@@ -40,7 +57,7 @@ public class OrderController {
 		order.setMenu(orderMenu);
 	}
 
-	public void calculate() {
+	public void calculatePrice() {
 		//	discountController.getDiscount(order, discount);
 		calculateAppetizerPrice(this.order);
 		calculateMainPrice(this.order);
@@ -52,7 +69,7 @@ public class OrderController {
 		Map<MainMenus, Integer> mainMenusOrders = order.getMainMenus();
 		for (MainMenus menu : mainMenusOrders.keySet()) {
 			int count = mainMenusOrders.get(menu);
-			if (count != ZERO) {
+			if (count != IntegerConstants.ZERO) {
 				order.addPrice(menu.getPrice() * count);
 			}
 		}
@@ -62,7 +79,7 @@ public class OrderController {
 		Map<Desserts, Integer> dessertOrders = order.getDessertMenus();
 		for (Desserts menu : dessertOrders.keySet()) {
 			int count = dessertOrders.get(menu);
-			if (count != ZERO) {
+			if (count != IntegerConstants.ZERO) {
 				order.addPrice(menu.getPrice() * count);
 			}
 		}
@@ -71,7 +88,7 @@ public class OrderController {
 	public void calculateAppetizerPrice(Order order) {
 		Map<Appetizers, Integer> appetizerOrders = order.getAppetizerMenus();
 		for (Appetizers appetizer : appetizerOrders.keySet()) {
-			if (appetizerOrders.get(appetizer) != ZERO) {
+			if (appetizerOrders.get(appetizer) != IntegerConstants.ZERO) {
 				order.addPrice(appetizerOrders.get(appetizer) * appetizer.getPrice());
 			}
 		}
@@ -81,7 +98,7 @@ public class OrderController {
 		Map<Beverages, Integer> beverageOrders = order.getBeveragesMenus();
 		for (Beverages beverage : beverageOrders.keySet()) {
 			int count = beverageOrders.get(beverage);
-			if (count != ZERO) {
+			if (count != IntegerConstants.ZERO) {
 				order.addPrice(count * beverage.getPrice());
 			}
 		}
@@ -91,5 +108,9 @@ public class OrderController {
 		outputView.printReportTitle(order);
 		outputView.printOrderedMenu(order);
 		outputView.printTotalPrice(order);
+		outputView.printDiscountList(order, discount, gift);
+		outputView.printTotalDiscount(discount, gift);
+		outputView.printBill(order, discount);
+		outputView.printBadge(order);
 	}
 }

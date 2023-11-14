@@ -5,6 +5,8 @@ import static christmas.util.Constants.IntegerConstants.*;
 import java.text.DecimalFormat;
 import java.util.Map;
 
+import christmas.model.Discount;
+import christmas.model.Gift;
 import christmas.model.Order;
 import christmas.model.menu.Appetizers;
 import christmas.model.menu.Beverages;
@@ -86,5 +88,46 @@ public class OutputView {
 		int totalPrice = order.getTotalPrice();
 		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
 		System.out.println(decimalFormat.format(totalPrice));
+	}
+
+	public static void printDiscountList(Order order, Discount discount, Gift gift) {
+		System.out.println();
+		printMSG(PrintPhrase.OutputMessage.MSG_BENEFIT_TITLE);
+		printDiscountByTitle(discount.getDDayDiscount(), PrintPhrase.OutputMessage.MSG_D_DAY_DISCOUNT_TITLE);
+		printDiscountByTitle(discount.getDessertMenuDiscount(), PrintPhrase.OutputMessage.MSG_WEEKDAY_DISCOUNT_TITLE);
+		printDiscountByTitle(discount.getMainMenuDiscount(), PrintPhrase.OutputMessage.MSG_WEEKEND_DISCOUNT_TITLE);
+		printDiscountByTitle(discount.getSpecialDiscount(), PrintPhrase.OutputMessage.MSG_SPECIAL_DISCOUNT_TITLE);
+		printDiscountByTitle(gift.getGiftPrice(), PrintPhrase.OutputMessage.MSG_GIFT_DISCOUNT_TITLE);
+	}
+
+	public static void printDiscountByTitle(int discount, String msg) {
+		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
+		if (discount != ZERO) {
+			printMSG(msg + PrintPhrase.MINUS +
+				decimalFormat.format(discount) +
+				PrintPhrase.PRICE_UNIT);
+		}
+	}
+
+	public static void printTotalDiscount(Discount discount, Gift gift) {
+		System.out.println();
+		printMSG(PrintPhrase.OutputMessage.MSG_TOTAL_DISCOUNT_TITLE);
+		int totalDiscount = discount.getTotalDiscount() + gift.getMyGiftPrice();
+		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
+		if (totalDiscount != ZERO) {
+			printMSG(PrintPhrase.MINUS +
+				decimalFormat.format(totalDiscount) +
+				PrintPhrase.PRICE_UNIT);
+		}
+	}
+
+	public static void printBill(Order order, Discount discount) {
+		System.out.println();
+		printMSG(PrintPhrase.OutputMessage.MSG_TOTAL_BILL_TITLE);
+	}
+
+	public static void printBadge(Order order) {
+		System.out.println();
+		printMSG(PrintPhrase.OutputMessage.MSG_BADGE_TITLE);
 	}
 }

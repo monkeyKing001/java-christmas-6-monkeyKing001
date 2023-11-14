@@ -19,7 +19,9 @@ public class EventController {
 		greeting();
 		orderController.takeOrderDay();
 		orderController.takeOrderMenu();
-		orderController.calculate();
+		orderController.calculatePrice();
+		orderController.calculateGift();
+		orderController.calculateDiscount();
 		orderController.report();
 	}
 

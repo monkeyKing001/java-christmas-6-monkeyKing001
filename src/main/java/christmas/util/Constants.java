@@ -2,10 +2,13 @@ package christmas.util;
 
 public class Constants {
 	public class IntegerConstants {
-		public static final int DEC_DAY_MIN = 1;
-		public static final int DEC_DAY_MAX = 31;
 		public static final int D_DAY_DISCOUNT_START = 1000;
 		public static final int D_DAY_DISCOUNT_PLUS = 100;
+
+		public static final int WEEKDAY_DISCOUNT = 2023;
+		public static final int WEEKEND_DISCOUNT = 2023;
+		public static final int SPECIAL_DISCOUNT = 1000;
+		public static final int CHAMPAGNE_THRESHOLD = 120000;
 		public static final int ZERO_COKE_PRICE = 3000;
 		public static final int RED_WINE_PRICE = 60000;
 		public static final int CHAMPAGNE_PRICE = 25000;
@@ -22,6 +25,9 @@ public class Constants {
 	}
 
 	public class DayConstants {
+		public static final int DEC_DAY_MIN = 1;
+		public static final int DEC_DAY_MAX = 31;
+		public static final int DAYS_IN_A_WEEK = 7;
 		public static final int CHRISTMAS_DAY = 25;
 		public static final int FRIDAY_MOD = 1;
 		public static final int SATURDAY_MOD = 2;

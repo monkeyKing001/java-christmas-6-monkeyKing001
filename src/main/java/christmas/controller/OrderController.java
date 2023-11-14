@@ -2,6 +2,7 @@ package christmas.controller;
 
 import java.util.Map;
 
+import christmas.model.Badge;
 import christmas.model.Client;
 import christmas.model.Discount;
 import christmas.model.Gift;
@@ -22,12 +23,14 @@ public class OrderController {
 	Gift gift;
 	Discount discount;
 	DiscountController discountController;
+	Badge badge;
 
 	public OrderController() {
 		order = new Order();
 		client = new Client();
 		discount = new Discount();
 		gift = new Gift();
+		badge = Badge.NONE;
 		discountController = new DiscountController();
 	}
 
@@ -104,13 +107,28 @@ public class OrderController {
 		}
 	}
 
+	public void calculateBadge(Order order) {
+		if (order.getTotalBill() >= IntegerConstants.STAR_BADGE_PRICE) {
+			this.badge = Badge.STAR;
+		}
+		if (order.getTotalBill() >= IntegerConstants.TREE_BADGE_PRICE) {
+			this.badge = Badge.TREE;
+		}
+		if (order.getTotalBill() >= IntegerConstants.SANTA_BADGE_PRICE) {
+			this.badge = Badge.SANTA;
+		}
+	}
+
 	public void report() {
 		outputView.printReportTitle(order);
 		outputView.printOrderedMenu(order);
 		outputView.printTotalPrice(order);
+		outputView.printGift(gift);
 		outputView.printDiscountList(order, discount, gift);
 		outputView.printTotalDiscount(discount, gift);
-		outputView.printBill(order, discount);
-		outputView.printBadge(order);
+		outputView.printBill(order);
+		//need split
+		calculateBadge(order);
+		outputView.printBadge(order, badge);
 	}
 }

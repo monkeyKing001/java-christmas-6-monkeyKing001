@@ -32,5 +32,6 @@ public class PrintPhrase {
 		public static final String MSG_WEEKEND_DISCOUNT_TITLE = "주말 할인: ";
 		public static final String MSG_SPECIAL_DISCOUNT_TITLE = "특별 할인: ";
 		public static final String MSG_GIFT_DISCOUNT_TITLE = "증정 이벤트: ";
+		public static final String MSG_GIFT = "샴페인 1개";
 	}
 }

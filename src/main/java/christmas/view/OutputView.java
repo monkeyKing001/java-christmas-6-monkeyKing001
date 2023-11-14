@@ -5,6 +5,7 @@ import static christmas.util.Constants.IntegerConstants.*;
 import java.text.DecimalFormat;
 import java.util.Map;
 
+import christmas.model.Badge;
 import christmas.model.Discount;
 import christmas.model.Gift;
 import christmas.model.Order;
@@ -121,13 +122,27 @@ public class OutputView {
 		}
 	}
 
-	public static void printBill(Order order, Discount discount) {
+	public static void printBill(Order order) {
 		System.out.println();
 		printMSG(PrintPhrase.OutputMessage.MSG_TOTAL_BILL_TITLE);
+		int totalBill = order.getTotalBill();
+		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
+		printMSG(PrintPhrase.MINUS +
+			decimalFormat.format(totalBill) +
+			PrintPhrase.PRICE_UNIT);
 	}
 
-	public static void printBadge(Order order) {
+	public static void printBadge(Order order, Badge badge) {
 		System.out.println();
 		printMSG(PrintPhrase.OutputMessage.MSG_BADGE_TITLE);
+		printMSG(badge.getName());
+	}
+
+	public static void printGift(Gift gift) {
+		System.out.println();
+		printMSG(PrintPhrase.OutputMessage.MSG_GIFT_TITLE);
+		if (gift.EnableGetGift()) {
+			printMSG(PrintPhrase.OutputMessage.MSG_GIFT);
+		}
 	}
 }

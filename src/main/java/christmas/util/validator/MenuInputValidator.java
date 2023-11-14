@@ -3,7 +3,6 @@ package christmas.util.validator;
 import java.util.HashSet;
 import java.util.Set;
 
-import christmas.model.Order;
 import christmas.model.menu.Appetizers;
 import christmas.model.menu.Beverages;
 import christmas.model.menu.Desserts;
@@ -55,7 +54,6 @@ public class MenuInputValidator {
 				throw new IllegalArgumentException();
 			}
 		}
-		throw new IllegalArgumentException();
 	}
 
 	private static void menuOnlyBeverageCheck(String menu) {
@@ -94,8 +92,5 @@ public class MenuInputValidator {
 				throw new IllegalArgumentException();
 			}
 		}
-	}
-
-	public static void orderCheck(Order order) {
 	}
 }

@@ -95,6 +95,7 @@ public class OutputView {
 		Gift gift = order.getGift();
 		if (discount.getTotalDiscount() == IntegerConstants.ZERO) {
 			printMSG(PrintPhrase.NONE);
+			return;
 		}
 		printDiscountByTitle(discount.getDDayDiscount(), PrintPhrase.OutputMessage.MSG_D_DAY_DISCOUNT_TITLE);
 		printDiscountByTitle(discount.getDessertMenuDiscount(), PrintPhrase.OutputMessage.MSG_WEEKDAY_DISCOUNT_TITLE);

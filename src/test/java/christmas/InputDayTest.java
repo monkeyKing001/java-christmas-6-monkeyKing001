@@ -57,6 +57,15 @@ public class InputDayTest extends NsTest {
 		});
 	}
 
+	@Test
+	@DisplayName("Day test 3 : underflow")
+	void dayExceptionRangeUnderflow() {
+		assertSimpleTest(() -> {
+			runException("-2147483650"); //underflow -> 1
+			assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+		});
+	}
+
 	@Override
 	protected void runMain() {
 		Application.main(new String[] {});

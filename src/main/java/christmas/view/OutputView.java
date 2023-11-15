@@ -93,7 +93,7 @@ public class OutputView {
 		printMsg(PrintPhrase.OutputMessage.MSG_BENEFIT_TITLE);
 		Discount discount = order.getDiscount();
 		Gift gift = order.getGift();
-		if (discount.getTotalDiscount() == IntegerConstants.ZERO) {
+		if (discount.getTotalDiscount() + gift.getMyGiftPrice() == IntegerConstants.ZERO) {
 			printMsg(PrintPhrase.NONE);
 			return;
 		}

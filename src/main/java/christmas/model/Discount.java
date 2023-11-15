@@ -49,10 +49,10 @@ public class Discount {
 	}
 
 	public int getTotalDiscount() {
-		int totalDiscount = getSpecialDiscount() +
-			getDessertMenuDiscount() +
-			getMainMenuDiscount() +
-			getDDayDiscount();
+		int totalDiscount = getSpecialDiscount()
+			+ getDessertMenuDiscount()
+			+ getMainMenuDiscount()
+			+ getDDayDiscount();
 		return totalDiscount;
 	}
 }

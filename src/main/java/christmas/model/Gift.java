@@ -10,7 +10,7 @@ public class Gift {
 	public Gift() {
 	}
 
-	public boolean EnableGetGift() {
+	public boolean enableGetGift() {
 		return enableGetGift;
 	}
 
@@ -18,17 +18,14 @@ public class Gift {
 		enableGetGift = true;
 	}
 
-	public Beverages getGiftType() {
-		return gift;
-	}
-
 	public int getGiftPrice() {
 		return gift.getPrice();
 	}
 
 	public int getMyGiftPrice() {
-		if (enableGetGift)
+		if (enableGetGift) {
 			return gift.getPrice();
+		}
 		return Constants.IntegerConstants.ZERO;
 	}
 }

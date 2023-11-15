@@ -17,7 +17,7 @@ import christmas.util.Constants.IntegerConstants;
 import christmas.util.PrintPhrase;
 
 public class OutputView {
-	public static void printMSG(String msg) {
+	public static void printMsg(String msg) {
 		System.out.println(msg);
 	}
 
@@ -28,7 +28,7 @@ public class OutputView {
 
 	public static void printOrderedMenu(Order order) {
 		System.out.println();
-		printMSG(PrintPhrase.OutputMessage.MSG_MENU_TITLE);
+		printMsg(PrintPhrase.OutputMessage.MSG_MENU_TITLE);
 		Map<Appetizers, Integer> appetizers = order.getAppetizerMenus();
 		Map<MainMenus, Integer> mainMenus = order.getMainMenus();
 		Map<Desserts, Integer> desserts = order.getDessertMenus();
@@ -44,7 +44,7 @@ public class OutputView {
 			MenuInfo menuName = entry.getKey();
 			Integer count = entry.getValue();
 			if (count != IntegerConstants.ZERO) {
-				printMSG(menuName.getName() + PrintPhrase.BLANK + count + PrintPhrase.MENU_COUNT_UNIT);
+				printMsg(menuName.getName() + PrintPhrase.BLANK + count + PrintPhrase.MENU_COUNT_UNIT);
 			}
 		}
 	}
@@ -54,7 +54,7 @@ public class OutputView {
 			MenuInfo menuName = entry.getKey();
 			Integer count = entry.getValue();
 			if (count != IntegerConstants.ZERO) {
-				printMSG(menuName.getName() + PrintPhrase.BLANK + count + PrintPhrase.MENU_COUNT_UNIT);
+				printMsg(menuName.getName() + PrintPhrase.BLANK + count + PrintPhrase.MENU_COUNT_UNIT);
 			}
 		}
 	}
@@ -64,7 +64,7 @@ public class OutputView {
 			MenuInfo menuName = entry.getKey();
 			Integer count = entry.getValue();
 			if (count != IntegerConstants.ZERO) {
-				printMSG(menuName.getName() + PrintPhrase.BLANK + count + PrintPhrase.MENU_COUNT_UNIT);
+				printMsg(menuName.getName() + PrintPhrase.BLANK + count + PrintPhrase.MENU_COUNT_UNIT);
 			}
 		}
 	}
@@ -74,14 +74,14 @@ public class OutputView {
 			MenuInfo menuName = entry.getKey();
 			Integer count = entry.getValue();
 			if (count != IntegerConstants.ZERO) {
-				printMSG(menuName.getName() + PrintPhrase.BLANK + count + PrintPhrase.MENU_COUNT_UNIT);
+				printMsg(menuName.getName() + PrintPhrase.BLANK + count + PrintPhrase.MENU_COUNT_UNIT);
 			}
 		}
 	}
 
 	public static void printTotalPrice(Order order) {
 		System.out.println();
-		printMSG(PrintPhrase.OutputMessage.MSG_TOTAL_BILL_BEFORE_DISCOUNT_TITLE);
+		printMsg(PrintPhrase.OutputMessage.MSG_TOTAL_BILL_BEFORE_DISCOUNT_TITLE);
 		int totalPrice = order.getTotalPrice();
 		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
 		System.out.println(decimalFormat.format(totalPrice));
@@ -90,11 +90,11 @@ public class OutputView {
 	public static void printDiscountList(Order order) {
 
 		System.out.println();
-		printMSG(PrintPhrase.OutputMessage.MSG_BENEFIT_TITLE);
+		printMsg(PrintPhrase.OutputMessage.MSG_BENEFIT_TITLE);
 		Discount discount = order.getDiscount();
 		Gift gift = order.getGift();
 		if (discount.getTotalDiscount() == IntegerConstants.ZERO) {
-			printMSG(PrintPhrase.NONE);
+			printMsg(PrintPhrase.NONE);
 			return;
 		}
 		printDiscountByTitle(discount.getDDayDiscount(), PrintPhrase.OutputMessage.MSG_D_DAY_DISCOUNT_TITLE);
@@ -107,9 +107,9 @@ public class OutputView {
 	public static void printDiscountByTitle(int discount, String msg) {
 		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
 		if (discount != Constants.IntegerConstants.ZERO) {
-			printMSG(msg + PrintPhrase.MINUS +
-				decimalFormat.format(discount) +
-				PrintPhrase.PRICE_UNIT);
+			printMsg(msg + PrintPhrase.MINUS
+				+ decimalFormat.format(discount)
+				+ PrintPhrase.PRICE_UNIT);
 		}
 	}
 
@@ -117,40 +117,40 @@ public class OutputView {
 		System.out.println();
 		Discount discount = order.getDiscount();
 		Gift gift = order.getGift();
-		printMSG(PrintPhrase.OutputMessage.MSG_TOTAL_DISCOUNT_TITLE);
+		printMsg(PrintPhrase.OutputMessage.MSG_TOTAL_DISCOUNT_TITLE);
 		int totalDiscount = discount.getTotalDiscount() + gift.getMyGiftPrice();
 		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
 		if (totalDiscount != IntegerConstants.ZERO) {
 			System.out.print(PrintPhrase.MINUS);
 		}
-		printMSG(decimalFormat.format(totalDiscount) + PrintPhrase.PRICE_UNIT);
+		printMsg(decimalFormat.format(totalDiscount) + PrintPhrase.PRICE_UNIT);
 	}
 
 	public static void printBill(Order order) {
 		System.out.println();
-		printMSG(PrintPhrase.OutputMessage.MSG_TOTAL_BILL_TITLE);
+		printMsg(PrintPhrase.OutputMessage.MSG_TOTAL_BILL_TITLE);
 		int totalBill = order.getTotalBill();
 		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
-		printMSG(PrintPhrase.MINUS +
-			decimalFormat.format(totalBill) +
-			PrintPhrase.PRICE_UNIT);
+		printMsg(PrintPhrase.MINUS
+			+ decimalFormat.format(totalBill)
+			+ PrintPhrase.PRICE_UNIT);
 	}
 
 	public static void printBadge(Order order) {
 		Badge badge = order.getBadge();
 		System.out.println();
-		printMSG(PrintPhrase.OutputMessage.MSG_BADGE_TITLE);
-		printMSG(badge.getName());
+		printMsg(PrintPhrase.OutputMessage.MSG_BADGE_TITLE);
+		printMsg(badge.getName());
 	}
 
 	public static void printGift(Order order) {
 		Gift gift = order.getGift();
 		System.out.println();
-		printMSG(PrintPhrase.OutputMessage.MSG_GIFT_TITLE);
-		if (gift.EnableGetGift()) {
-			printMSG(PrintPhrase.OutputMessage.MSG_GIFT);
-		} else if (!gift.EnableGetGift()) {
-			printMSG(PrintPhrase.NONE);
+		printMsg(PrintPhrase.OutputMessage.MSG_GIFT_TITLE);
+		if (gift.enableGetGift()) {
+			printMsg(PrintPhrase.OutputMessage.MSG_GIFT);
+		} else if (!gift.enableGetGift()) {
+			printMsg(PrintPhrase.NONE);
 		}
 	}
 

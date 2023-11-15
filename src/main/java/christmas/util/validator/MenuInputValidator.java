@@ -61,7 +61,7 @@ public class MenuInputValidator {
 		for (String menuInfo : tokens) {
 			String[] menuInfoTok = menuInfo.split(PrintPhrase.MINUS);
 			String menuName = menuInfoTok[0];
-			if (Beverages.find(menuName) != Beverages.UNKNOWN) {
+			if (Beverages.find(menuName) == Beverages.UNKNOWN) {
 				return;
 			}
 		}
@@ -85,10 +85,10 @@ public class MenuInputValidator {
 		for (String menuInfo : tokens) {
 			String[] menuInfoTok = menuInfo.split(PrintPhrase.MINUS);
 			String menuName = menuInfoTok[0];
-			if (Beverages.find(menuName) == Beverages.UNKNOWN &&
-				MainMenus.find(menuName) == MainMenus.UNKNOWN &&
-				Appetizers.find(menuName) == Appetizers.UNKNOWN &&
-				Desserts.find(menuName) == Desserts.UNKNOWN) {
+			if (Beverages.find(menuName) == Beverages.UNKNOWN
+				&& MainMenus.find(menuName) == MainMenus.UNKNOWN
+				&& Appetizers.find(menuName) == Appetizers.UNKNOWN
+				&& Desserts.find(menuName) == Desserts.UNKNOWN) {
 				throw new IllegalArgumentException();
 			}
 		}

@@ -84,7 +84,7 @@ public class OutputView {
 		printMsg(PrintPhrase.OutputMessage.MSG_TOTAL_BILL_BEFORE_DISCOUNT_TITLE);
 		int totalPrice = order.getTotalPrice();
 		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
-		System.out.println(decimalFormat.format(totalPrice));
+		System.out.println(decimalFormat.format(totalPrice) + PrintPhrase.PRICE_UNIT);
 	}
 
 	public static void printDiscountList(Order order) {
@@ -101,10 +101,13 @@ public class OutputView {
 		printDiscountByTitle(discount.getDessertMenuDiscount(), PrintPhrase.OutputMessage.MSG_WEEKDAY_DISCOUNT_TITLE);
 		printDiscountByTitle(discount.getMainMenuDiscount(), PrintPhrase.OutputMessage.MSG_WEEKEND_DISCOUNT_TITLE);
 		printDiscountByTitle(discount.getSpecialDiscount(), PrintPhrase.OutputMessage.MSG_SPECIAL_DISCOUNT_TITLE);
-		printDiscountByTitle(gift.getGiftPrice(), PrintPhrase.OutputMessage.MSG_GIFT_DISCOUNT_TITLE);
+		printDiscountByTitle(gift.getMyGiftPrice(), PrintPhrase.OutputMessage.MSG_GIFT_DISCOUNT_TITLE);
 	}
 
 	public static void printDiscountByTitle(int discount, String msg) {
+		if (discount == IntegerConstants.ZERO) {
+			return;
+		}
 		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
 		if (discount != Constants.IntegerConstants.ZERO) {
 			printMsg(msg + PrintPhrase.MINUS
@@ -131,8 +134,7 @@ public class OutputView {
 		printMsg(PrintPhrase.OutputMessage.MSG_TOTAL_BILL_TITLE);
 		int totalBill = order.getTotalBill();
 		DecimalFormat decimalFormat = new DecimalFormat(PrintPhrase.FORMAT_PRICE);
-		printMsg(PrintPhrase.MINUS
-			+ decimalFormat.format(totalBill)
+		printMsg(decimalFormat.format(totalBill)
 			+ PrintPhrase.PRICE_UNIT);
 	}
 

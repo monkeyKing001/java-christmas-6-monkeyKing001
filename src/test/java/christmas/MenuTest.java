@@ -54,10 +54,6 @@ public class MenuTest extends NsTest {
 			runException("3", "타파스-2,타파스-2");
 			assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
 		});
-		assertSimpleTest(() -> {
-			runException("3", "바비큐립-2,타파스-2");
-			assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
-		});
 	}
 
 	@Test
@@ -85,7 +81,7 @@ public class MenuTest extends NsTest {
 			assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
 		});
 		assertSimpleTest(() -> {
-			runException("3", "제로콜라-10,바비큐립-10");
+			runException("3", "제로콜라-10,바비큐립-11");
 			assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
 		});
 	}

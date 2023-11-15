@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 
-class 햐ApplicationTest extends NsTest {
+class ApplicationTestChy extends NsTest {
 	private static final String LINE_SEPARATOR = System.lineSeparator();
 
 	@Test
@@ -96,7 +96,7 @@ class 햐ApplicationTest extends NsTest {
 			assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
 		});
 		assertSimpleTest(() -> {
-			runException("32");
+			runException("30");
 			assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
 		});
 	}

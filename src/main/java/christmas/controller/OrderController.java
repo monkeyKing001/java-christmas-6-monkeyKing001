@@ -98,14 +98,16 @@ public class OrderController {
 	}
 
 	public void calculateBadge(Order order) {
-		Badge badge = order.getBadge();
-		if (order.getTotalBill() >= IntegerConstants.STAR_BADGE_PRICE) {
+		Discount discount = order.getDiscount();
+		Gift gift = order.getGift();
+		int threshold = discount.getTotalDiscount() + gift.getMyGiftPrice();
+		if (threshold >= IntegerConstants.STAR_BADGE_PRICE) {
 			order.setBadge(Badge.STAR);
 		}
-		if (order.getTotalBill() >= IntegerConstants.TREE_BADGE_PRICE) {
+		if (threshold >= IntegerConstants.TREE_BADGE_PRICE) {
 			order.setBadge(Badge.TREE);
 		}
-		if (order.getTotalBill() >= IntegerConstants.SANTA_BADGE_PRICE) {
+		if (threshold >= IntegerConstants.SANTA_BADGE_PRICE) {
 			order.setBadge(Badge.SANTA);
 		}
 	}

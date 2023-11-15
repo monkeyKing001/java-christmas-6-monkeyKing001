@@ -50,6 +50,22 @@ class ApplicationTest extends NsTest {
 		});
 	}
 
+	@Test
+	void 혜택내역() {
+		assertSimpleTest(() -> {
+			runException("3", "바비큐립-2,타파스-2");
+			assertThat(output()).contains(
+				"<할인 전 총주문 금액>" + LINE_SEPARATOR + "119,000원",
+				"<증정 메뉴>" + LINE_SEPARATOR + "없음",
+				"크리스마스 디데이 할인: -1,200원",
+				"특별 할인: -1,000원",
+				"<총혜택 금액>" + LINE_SEPARATOR + "-2,200원",
+				"<할인 후 예상 결제 금액>" + LINE_SEPARATOR + "116,800원",
+				"<12월 이벤트 배지>" + LINE_SEPARATOR + "없음"
+			);
+		});
+	}
+
 	@Override
 	protected void runMain() {
 		Application.main(new String[] {});
